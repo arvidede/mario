@@ -1,0 +1,27 @@
+public void readFile(String mapName) {
+		File file = new File(mapName);
+		String current; // = "";
+		String split =",";
+		int x;
+		int y;
+		char type;
+		try {
+			BufferedReader reader = new BufferedReader(new FileReader(file));
+			
+			while((current = reader.readLine()) != null) {
+				String[] ch = current.split(split);
+				x = Integer.parseInt(ch[0]);
+				y = Integer.parseInt(ch[1]);
+				type =  ch[2].charAt(0);
+				objectList.add(new MapObject(x,y,type, this));	
+			}
+			reader.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
